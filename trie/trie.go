@@ -2,7 +2,7 @@ package trie
 
 
 import(
-	"IR/models"
+	"ir/models"
 )
 
 const (

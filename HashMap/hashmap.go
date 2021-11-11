@@ -1,7 +1,7 @@
 package hashmap
 
 import (
-	"IR/models"
+	"ir/models"
 )
 
 var Dictionary map[string]bool

@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"IR/config"
-	"IR/hashmap"
+	"ir/config"
+	"ir/hashmap"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"

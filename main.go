@@ -1,8 +1,8 @@
 package main
 
 import (
-	"IR/config"
-	"IR/controllers"
+	"ir/config"
+	"ir/controllers"
 	"fmt"
 	"os"
 

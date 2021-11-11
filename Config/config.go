@@ -1,9 +1,9 @@
 package config
 
 import (
-	"IR/hashmap"
-	"IR/models"
-	"IR/trie"
+	"ir/hashmap"
+	"ir/models"
+	"ir/trie"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"

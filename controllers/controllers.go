@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"ir/configs"
-	"ir/hashmap"
+	"ir/hmap"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -71,8 +71,8 @@ func Findstr(c echo.Context) error {
 	word := request{}
 	res := response{}
 	json.Unmarshal(body, &word)
-	fmt.Println(hashmap.Dictionary)
-	if hashmap.FindWord(word.Word) {
+	fmt.Println(hmap.Dictionary)
+	if hmap.FindWord(word.Word) {
 		res.Words = append(res.Words, word.Word)
 		return c.JSON(http.StatusAccepted, res)
 	}

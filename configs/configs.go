@@ -1,7 +1,7 @@
 package configs
 
 import (
-	"ir/hashmap"
+	"ir/hmap"
 	"ir/models"
 	"ir/trie"
 	"encoding/json"
@@ -21,7 +21,7 @@ func ReadConfig() {
 		log.Panicf("failed reading data from file: %s", err)
 	}
 	json.Unmarshal(data, &W)
-	hashmap.StoreintoMap(W)
+	hmap.StoreintoMap(W)
 	trie.StoreintoTrie(W)
 	Size = len(W.Words)
 }

@@ -1,4 +1,4 @@
-package hashmap
+package hmap
 
 import (
 	"ir/models"

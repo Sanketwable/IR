@@ -6,7 +6,7 @@ import(
 )
 
 const (
-	 ALBHABET_SIZE = 26
+	 ALBHABET_SIZE = 255
  )
  
  type TrieNode struct {

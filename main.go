@@ -20,10 +20,7 @@ func main() {
 	// port := "8080"
 	port := os.Getenv("PORT")
 
-	e.POST("/substr", controllers.Substr)
-	e.POST("/prefixstr", controllers.PrefixStr)
-	e.POST("/suffixstr", controllers.Suffixstr)
-	e.POST("/findstr", controllers.Findstr)
+	e.POST("/query", controllers.GetWord)
 	e.POST("/addstr", controllers.Addstr)
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", port)))
 }

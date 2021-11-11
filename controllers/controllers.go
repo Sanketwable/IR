@@ -85,6 +85,8 @@ func GetWord(c echo.Context) error {
 	sort.Strings(words)
 	
 	res.Words = append(res.Words, words...)
+	c.Request().Response.Header.Add("Access-Control-Allow-Origin", "*")
+	c.Request().Header.Add("Access-Control-Allow-Origin", "*")
 	return c.JSON(http.StatusAccepted, res)
 }
 

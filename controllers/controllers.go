@@ -15,36 +15,28 @@ import (
 type response struct {
 	Words []string `json:"words"`
 }
-type request struct {
-	Word string `json:"word"`
-}
+
 
 func GetWord(c echo.Context) error {
-	body, err := ioutil.ReadAll(c.Request().Body)
-	if err != nil {
-		return err
-	}
 
-	word := request{}
-	json.Unmarshal(body, &word)
+	word := c.Request().URL.Query().Get("word")
 
-	w := word.Word
+	w := word
 	var words []string
 	res := response{}
-	if hmap.FindWord(word.Word) {
-		res.Words = append(res.Words, word.Word)
-		return c.JSON(http.StatusAccepted, res)
+	if hmap.FindWord(w) {
+		words = append(words, w)
 	} else if w[0] == '*' && w[len(w)-1] == '*' {
-		wrd := w[1:len(w)-1]
+		wrd := w[1 : len(w)-1]
 		words = getSubstr(wrd)
-		
+
 	} else if w[0] == '*' {
-		
+
 		wrd := w[1:]
 		words = getSufixstr(wrd)
 	} else if w[len(w)-1] == '*' {
-		
-		wrd := w[0:len(w)-1]
+
+		wrd := w[0 : len(w)-1]
 		fmt.Println("here", wrd)
 		words = getPrefixstr(wrd)
 	} else {
@@ -58,7 +50,7 @@ func GetWord(c echo.Context) error {
 			}
 		}
 		if countstar == 0 {
-			words = getSimilarWord(word.Word)
+			words = getSimilarWord(w)
 		} else {
 			startword := w[0:index]
 			endword := w[index+1:]
@@ -80,10 +72,10 @@ func GetWord(c echo.Context) error {
 				}
 			}
 		}
- 	}
-	
+	}
+
 	sort.Strings(words)
-	
+
 	res.Words = append(res.Words, words...)
 	c.Response().Header().Set("Access-Control-Allow-Origin", "*")
 	return c.JSON(http.StatusAccepted, res)
@@ -103,12 +95,12 @@ func getSimilarWord(word string) []string {
 	sort.Ints(ints)
 	eD := ints[0]
 	words = append(words, mp[ints[0]]...)
-	if len(ints) >=2 {
+	if len(ints) >= 2 {
 		words = append(words, mp[ints[1]]...)
 	}
 	var finalwords []string
 	for _, w := range words {
-		if w[0] == word[0] ||  eD == 1 {
+		if w[0] == word[0] || eD == 1 {
 			finalwords = append(finalwords, w)
 		}
 	}
@@ -122,11 +114,11 @@ func Addstr(c echo.Context) error {
 		return err
 	}
 
-	word := request{}
+	word := c.Request().URL.Query().Get("word")
 	res := response{}
 	json.Unmarshal(body, &word)
-	AddWord(word.Word)
-	res.Words = append(res.Words, word.Word)
+	AddWord(word)
+	res.Words = append(res.Words, word)
 
 	return c.JSON(http.StatusAccepted, res)
 }

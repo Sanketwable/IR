@@ -5,12 +5,22 @@ makeRequest()
 
 function makeRequest() {
     console.log("sanket")
-    $.post('https://still-stream-79080.herokuapp.com/query',  // url
-       { word: 'san*' }, // data to be submit
-       function(data, status, xhr) {   // success callback function
-                alert('status: ' + status + ', data: ' + data.responseData);
-            },
-       'json');
+    .ajax({
+        url: 'http://localhost:8080/query',
+        type: 'post',
+        data: { word:"san*"},
+        headers: {
+            "Access-Control-Allow-Origin": "*"
+        },
+        dataType: 'json',
+        success: function (data){
+            alert(data);
+        },
+        error: function (data){
+            alert("Outlet Creation Failed, please try again.");        
+        }
+    
+        });
 }
 // const f = document.getElementById('form');
 // const q = document.getElementById('query');

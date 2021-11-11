@@ -43,7 +43,9 @@ func GetWord(c echo.Context) error {
 		wrd := w[1:]
 		words = getSufixstr(wrd)
 	} else if w[len(w)-1] == '*' {
+		
 		wrd := w[0:len(w)-1]
+		fmt.Println("here", wrd)
 		words = getPrefixstr(wrd)
 	} else {
 		countstar := 0
@@ -181,6 +183,10 @@ func getPrefixstr(str string) []string {
 	for _, word := range configs.W.Words {
 		match := true
 		for i := range str {
+			if i >= len(word) {
+				match = false
+				break
+			}
 			ch := str[i]
 			wch := word[i]
 			if ch != wch {
@@ -203,6 +209,7 @@ func getSufixstr(str string) []string {
 		lenword := len(word)
 		for i := range str {
 			if i >= lenword {
+				match = false
 				break
 			}
 			ch := str[lenstr-1-i]

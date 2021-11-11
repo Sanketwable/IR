@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"ir/config"
+	"ir/configs"
 	"ir/hashmap"
 	"encoding/json"
 	"fmt"
@@ -97,8 +97,8 @@ func Addstr(c echo.Context) error {
 }
 
 func AddWord(str string) {
-	config.W.Words = append(config.W.Words, str)
-	config.StoreWord()
+	configs.W.Words = append(configs.W.Words, str)
+	configs.StoreWord()
 }
 func strStr(haystack string, needle string) int {
 	l := len(needle)
@@ -136,7 +136,7 @@ func strStr(haystack string, needle string) int {
 
 func getSubstr(str string) []string {
 	var words []string
-	for _, word := range config.W.Words {
+	for _, word := range configs.W.Words {
 		if strStr(word, str) != -1 {
 			words = append(words, word)
 		}
@@ -146,7 +146,7 @@ func getSubstr(str string) []string {
 
 func getPrefixstr(str string) []string {
 	var words []string
-	for _, word := range config.W.Words {
+	for _, word := range configs.W.Words {
 		match := true
 		for i := range str {
 			ch := str[i]
@@ -166,7 +166,7 @@ func getPrefixstr(str string) []string {
 func getSufixstr(str string) []string {
 	var words []string
 	lenstr := len(str)
-	for _, word := range config.W.Words {
+	for _, word := range configs.W.Words {
 		match := true
 		lenword := len(word)
 		for i := range str {

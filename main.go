@@ -1,7 +1,7 @@
 package main
 
 import (
-	"ir/config"
+	"ir/configs"
 	"ir/controllers"
 	"fmt"
 	"os"
@@ -12,7 +12,7 @@ import (
 
 func main() {
 
-	config.ReadConfig()
+	configs.ReadConfig()
 
 	e := echo.New()
 	e.Use(middleware.Logger())

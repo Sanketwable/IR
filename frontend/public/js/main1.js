@@ -15,29 +15,11 @@ const getInfo = async (event) => {
         try {
             let url = `https://still-stream-79080.herokuapp.com/addstr?word=${cityVal}`;
             const response = await fetch(url);
-            // const data = await response.json();
-            
-            // let answer = JSON.stringify(data);
-            // let pk = ""
-            // let k = 0
-            // for (let i = 0; i < answer.length; i++) {
-            //     k++;
-            //     if (answer[i] == '{' || answer[i] == '}' || answer[i] == '[' || answer[i] == ']' || answer[i] == '"') {
-            //         continue;
-            //     } else {
-            //         pk += answer[i];
-            //     }
-            //     if (answer[i] == ',') answer += " ";
-            //     if ((i%30 == 0) || (k > 25 && answer[i] == ',')) {
-            //         pk += "\n";
-            //         k = 0;
-            //     }
-            // }
-            // let lk = pk.substring(6, pk.length)
-            // city_name.innerText = `${lk}`;
+            let lk = 'Word Added'
+            city_name.innerText = `${lk}`;
         }catch {
             //console.log(Error);
-            city_name.innerText = `Pls Enter valid city name ${Error}`;
+            city_name.innerText = `Word Added`;
             datahide.classList.add('data_hide');
         }
     }

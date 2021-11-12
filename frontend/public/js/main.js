@@ -9,7 +9,7 @@ const getInfo = async (event) => {
     let cityVal = cityName.value;
 
     if (cityVal == "") {
-        city_name.innerText = `Pls write the name befor search`;
+        city_name.innerText = `Pls write the word befor search`;
         datahide.classList.add('data_hide');
     } else {
         try {
@@ -37,7 +37,7 @@ const getInfo = async (event) => {
             city_name.innerText = `${lk}`;
         }catch {
             //console.log(Error);
-            city_name.innerText = `Pls Enter valid city name ${Error}`;
+            city_name.innerText = `Pls Enter valid word name ${Error}`;
             datahide.classList.add('data_hide');
         }
     }

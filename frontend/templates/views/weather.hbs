@@ -16,7 +16,7 @@
 
                 <div class="main_content">
                     <form class="temp_form">
-                        <input type="text" id="cityName" placeholder="Enter your city name" autocomplete="off">
+                        <input type="text" id="cityName" placeholder="Enter your word here" autocomplete="off">
                         <input type="submit" value="Search" id="submitBtn">
                     </form>
                 </div>
@@ -26,7 +26,14 @@
                         <p id="today_date">31 May</p>
                     </div> --}}
                     <div class="main_layer">
-                        <p id="city_name">Get Output Here</p>
+                        <p id="city_name">
+                            Get Output Here:<br>
+                            You can search for:<br>
+                            1. abc* (word starting with 'abc')<br>
+                            2. *abc (word ending with 'abc')<br>
+                            3. abc  (find the word or return word with min edit distance)<br>
+                            4. ab*c (word starting with 'ab' and ending with 'c')<br>
+                        </p>
                         <div class="middle_layer data_hide">
                             <p id="temp"><span id="temp_real_val">0</span> <sup>o</sup>C</p>
                             <p id="temp_status"> <i class="fa fa-cloud" aria-hidden="true"></i></p>
